@@ -20,17 +20,6 @@
 | Evaluation | Retrieval ablation, strong baselines, open-set guardrail benchmark |
 | Output | Risk level, hazard explanation, cited evidence, corrective actions and history |
 
-## Why FireAgent
-
-消防隐患识别不是普通图像分类任务。真实巡检场景中，一张图片可能同时包含通道堵塞、电气隐患、可燃物堆放、设备遮挡等多类风险；如果直接让大模型自由回答，容易出现无依据判断、幻觉引用、遗漏隐患和过度自信等问题。
-
-FireAgent 的核心目标是把“大模型能看图”升级为“系统能基于证据做安判断”：全
-
-- **Evidence-first**：输出风险结论前必须先召回规则证据。
-- **Safety-aware**：证据不足时触发开放集守护，避免强行下结论。
-- **Scene-grounded**：根据校园、住宅、施工、工业等场景动态路由规则。
-- **Traceable**：保留查询、候选规则、阈值、守护状态和历史记录。
-- **Deployable**：提供 Web 页面、微信小程序端和 FastAPI 后端原型。
 
 ## Core Capabilities
 
@@ -47,8 +36,6 @@ FireAgent 的核心目标是把“大模型能看图”升级为“系统能基�
 
 ### 1. Two-Hop Evidence-Constrained Inference
 
-系统将图片分析拆成两个阶段：
-
 ```text
 Stage 1: Visual Fact Extraction
 Y1 = g_vlm(I, s, u) = {o, h, k, r_h}
@@ -57,40 +44,20 @@ Stage 2: Evidence-Constrained Reasoning
 Y2 = g_llm(Y1, E) = {r, Z, A}
 ```
 
-- `Y1` 只负责抽取现场事实、候选隐患和检索关键词。
-- `E` 来自消防规则知识库和检索增强模块。
-- `Y2` 基于证据生成风险等级、隐患结论和整改建议。
-
-这种设计将“看到了什么”和“是否构成隐患”解耦，降低多模态模型的自由发挥空间。
-
 ### 2. Scene-Aware Hybrid RAG
-
-FireAgent 使用面向消防规则的混合检索策略，融合关键词匹配、向量相似度、Dense 双塔语义索引和场景化加权：
 
 ```text
 S_base(d,q) = alpha * S_lex + beta * S_vec + gamma * S_dense
 S(d,q) = S_base + b_scene + b_path + b_hint
 ```
 
-检索查询由三类路径组成：
-
-- **主查询**：由图片观察事实和关键词生成。
-- **场景查询**：由宿舍、楼道、工业、施工等场景模板生成。
-- **隐患查询**：由电气、堵塞、烟火、疏散等隐患类型生成。
-
 ### 3. Evidence Tree Retrieval
-
-为了避免单一查询漏召回，系统将检索过程建模为证据树：
 
 ```text
 Score_tree(d) = sum_{p in P(d)} w_p * s_p(d)
 ```
-
-同一条规则如果被主查询、场景查询和隐患查询多路径命中，会获得更高可信度。证据树让规则召回从“单点关键词命中”变成“多视角证据汇聚”。
-
 ### 4. Submodular Evidence Set Selection
 
-最终证据不是简单取 Top-k，而是选择一组互补证据：
 
 ```text
 Delta(d | E)
@@ -100,11 +67,8 @@ Delta(d | E)
   + w_hD * hazard_coverage(d, E)
 ```
 
-该目标同时考虑相关性、新颖性、来源多样性和隐患覆盖，避免多条相似法规重复占据证据列表。
-
 ### 5. Dynamic Retrieval Budget
 
-复杂图片需要更多规则证据，简单图片不应引入过多噪声。FireAgent 根据查询长度、隐患数量、工业场景和冲突线索估计检索预算：
 
 ```text
 C(q) = lambda_1 * len(q)
@@ -117,24 +81,20 @@ K(q) = K_min + eta * sigmoid(C(q))
 
 ### 6. Open-Set Guardrail
 
-消防安全场景中，“错误自信”比“不回答”更危险。系统在证据不足时触发保守策略：
 
 ```text
 Guard(q) = I(n_cand < tau_n or s_top < tau_s or cover < tau_c)
 ```
 
-守护机制从证据数量、最高证据分数和隐患覆盖度三个角度判断是否应该继续生成。
 
 ### 7. Four-Layer Memory
 
-FireAgent 将巡检过程建模为持续治理任务，而不是一次性识别：
+- **Core Memory**
+- **Task Memory**
+- **Short-Term Memory**
+- **Long-Term Memory**
 
-- **Core Memory**：系统级安全边界与输出规范。
-- **Task Memory**：当前巡检任务目标、场景和状态。
-- **Short-Term Memory**：会话内上下文、追问与工具调用轨迹。
-- **Long-Term Memory**：历史案例、复发风险、整改任务和风险画像。
-
-更多算法细节见 [docs/ALGORITHMS.md](docs/ALGORITHMS.md)。
+[docs/ALGORITHMS.md](docs/ALGORITHMS.md)。
 
 ## System Architecture
 
