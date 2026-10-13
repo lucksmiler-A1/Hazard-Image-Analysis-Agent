@@ -1,4 +1,4 @@
-# FireAgent
+# Hazard-Image-Analysis-Agent
 
 > Knowledge-enhanced multimodal agent for fire-safety hazard image analysis.
 
@@ -7,10 +7,6 @@
 [![RAG](https://img.shields.io/badge/RAG-evidence--tree-orange)](docs/ALGORITHMS.md)
 [![Guardrail](https://img.shields.io/badge/Safety-open--set%20guardrail-bb1d1d)](docs/ALGORITHMS.md#8-open-set-guardrail)
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
-
-FireAgent 是一个面向消防安全巡检的多模态智能体系统。它不是简单地把图片丢给大模型生成结论，而是将 **视觉事实抽取、消防法规 RAG、证据树检索、开放集守护与四层记忆机制** 串成一条可解释、可审计、可持续治理的安全分析链路。
-
-一句话概括：**先看清现场，再检索依据，最后基于证据给出风险判断和整改建议。**
 
 ## At a Glance
 
@@ -28,7 +24,7 @@ FireAgent 是一个面向消防安全巡检的多模态智能体系统。它不�
 
 消防隐患识别不是普通图像分类任务。真实巡检场景中，一张图片可能同时包含通道堵塞、电气隐患、可燃物堆放、设备遮挡等多类风险；如果直接让大模型自由回答，容易出现无依据判断、幻觉引用、遗漏隐患和过度自信等问题。
 
-FireAgent 的核心目标是把“大模型能看图”升级为“系统能基于证据做安全判断”：
+FireAgent 的核心目标是把“大模型能看图”升级为“系统能基于证据做安判断”：全
 
 - **Evidence-first**：输出风险结论前必须先召回规则证据。
 - **Safety-aware**：证据不足时触发开放集守护，避免强行下结论。
