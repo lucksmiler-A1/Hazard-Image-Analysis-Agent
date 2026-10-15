@@ -15,7 +15,7 @@ Input image
   -> Stage2 evidence-constrained reasoning
   -> memory update and record storage
 ```
-
+ 
 The central design principle is **evidence before conclusion**. The system should not produce a high-confidence fire-safety judgment unless the retrieved rule evidence is sufficient.
 
 ## 2. Two-Hop Inference

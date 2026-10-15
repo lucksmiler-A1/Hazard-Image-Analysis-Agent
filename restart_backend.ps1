@@ -2,7 +2,7 @@ param(
   [int]$Port = 8010,
   [string]$BindHost = "0.0.0.0"
 )
-
+ 
 $ErrorActionPreference = "Stop"
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path

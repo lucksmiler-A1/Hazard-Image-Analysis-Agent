@@ -10,7 +10,7 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
+    }, 
     "useCompilerPlugins": false,
     "minifyWXML": true,
     "compileWorklet": false,

@@ -7,7 +7,7 @@ Page({
     showPreview: false,       // 是否显示预览
     isAnalyzing: false        // 是否正在分析中
   },
-
+ 
   /**
    * 页面加载完成
    */

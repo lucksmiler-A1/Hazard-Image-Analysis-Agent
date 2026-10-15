@@ -9,12 +9,12 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "消防隐患识别",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "permission": {
     "scope.writePhotosAlbum": {
-      "desc": "保存识别结果到相册"
+      "desc": ""
     }
   }
-}
+} 

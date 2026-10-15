@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
 ## At a Glance
-
+ 
 | Dimension | Design |
 | --- | --- |
 | Task | Fire-safety hazard image analysis |

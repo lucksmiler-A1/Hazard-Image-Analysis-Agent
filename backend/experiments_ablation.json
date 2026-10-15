@@ -57,7 +57,7 @@
         "hit_top1": true,
         "hit_top3": true,
         "mrr": 1.0
-      },
+      }, 
       {
         "name": "fire_lane_parking",
         "expected_ids": [

@@ -1,13 +1,11 @@
-/* app.wxss - 全局样式 */
+/* app.wxss*/
 
-/* 容器样式 */
 .container {
   padding: 32rpx;
   min-height: 100vh;
   background-color: #f8f8f8;
 }
-
-/* 按钮样式 */
+ 
 .btn {
   border-radius: 8rpx;
   font-size: 32rpx;
@@ -39,7 +37,7 @@
   color: white;
 }
 
-/* 卡片样式 */
+
 .card {
   background-color: white;
   border-radius: 12rpx;
@@ -48,7 +46,6 @@
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
 }
 
-/* 文本样式 */
 .title {
   font-size: 36rpx;
   font-weight: bold;
@@ -68,7 +65,6 @@
   line-height: 1.5;
 }
 
-/* 状态颜色 */
 .status-safe {
   color: #07c160;
 }
@@ -81,20 +77,17 @@
   color: #ee0a24;
 }
 
-/* 图标样式 */
 .icon {
   font-size: 48rpx;
   margin-right: 16rpx;
 }
 
-/* 图片样式 */
 .image {
   border-radius: 8rpx;
   width: 100%;
   height: auto;
 }
 
-/* 列表样式 */
 .list-item {
   padding: 24rpx;
   border-bottom: 1rpx solid #eee;
@@ -104,7 +97,6 @@
   border-bottom: none;
 }
 
-/* 空状态样式 */
 .empty {
   text-align: center;
   padding: 120rpx 0;
@@ -112,7 +104,6 @@
   font-size: 28rpx;
 }
 
-/* 加载样式 */
 .loading {
   display: flex;
   justify-content: center;

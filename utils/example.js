@@ -6,7 +6,7 @@ const { apiGet, apiPost, apiUploadImage } = require('./request.js');
 
 /**
  * 示例：获取消防隐患历史记录
- */
+ */ 
 async function getHistoryRecords() {
   try {
     // GET请求示例 - 获取历史记录

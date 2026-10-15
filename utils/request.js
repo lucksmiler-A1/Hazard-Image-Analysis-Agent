@@ -12,7 +12,7 @@ function buildApiUrl(path) {
   const normalizedPath = path.startsWith('/') ? path : '/' + path;
   return BASE_URL + API_PREFIX + normalizedPath;
 }
-
+ 
 /**
  * 处理请求错误，显示toast提示并抛出错误
  * @param {string} message 错误消息

@@ -7,7 +7,7 @@ ENV/
 env/
 __pycache__/
 *.py[cod]
-
+ 
 # Backend local state
 backend/.env
 backend/*.db
